@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">KotlineShareApp</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="splash_one">splash one</string>
+    <string name="sharing_text">Friendship marks a life even more deeply than love. Love risks degenerating into
+        obsession, friendship is never anything but sharing.
+    </string>
+    <string name="sharing_text2">Wisdom cannot be imparted. Wisdom that a wise man attempts to impart always sounds like
+        foolishness to someone else ... Knowledge can be communicated, but not wisdom. One can find it, live it, do
+        wonders through it, but one cannot communicate and teach it
+    </string>
+    <string name="sharing_text3">If we have no peace, it is because we have forgotten that we belong to each other
+    </string>
+    <string name="privacy_text">we have a very strict privacy policy, all your data belongs only to you</string>
+    <string name="you_agree">By using this app, agree to its terms of use and privacy policy</string>
+    <string name="x">x</string>
+    <string name="register">Register</string>
+</resources>
