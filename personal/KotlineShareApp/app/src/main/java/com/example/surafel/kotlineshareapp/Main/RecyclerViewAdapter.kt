@@ -6,27 +6,102 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.surafel.kotlineshareapp.R
-import com.example.surafel.kotlineshareapp.datamanager.mockData
 import kotlinx.android.synthetic.main.recycler_view_cell.view.*
+import com.example.surafel.kotlineshareapp.LocalDB.ReportedData
 
 class AdapterRV : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
 
     private var count = 0
     val mockData= listOf(
-        mockData("Android Kotlin","check"),
-        mockData("Android Java","check"),
-        mockData("Just Android","check"),
-        mockData("Android Kotlin2","check"),
-        mockData("Android Kotlin3","check"),
-        mockData("Android Kotlin4","check"),
-        mockData("test18","check"),
-        mockData("test19","check"),
-        mockData("test11","check"),
-        mockData("test12","check"),
-        mockData("test13","check"),
-        mockData("test14","check"),
-        mockData("test15","check"),
-        mockData("what","no questions"))
+        ReportedData(
+            1,
+            true,
+            "Android Kotlin1",
+            " This book is all about android ha ha This book is all about android ha ha",
+            "pdf",
+            "University"
+        ),
+        ReportedData(
+            2,
+            true,
+            "Android Kotlin2",
+            "This book is all about android ha ha",
+            "pdf",
+            "University"
+        ),
+        ReportedData(
+            3,
+            true,
+            "Android Kotlin3",
+            "This book is all about android ha ha",
+            "pdf",
+            "University"
+        ),
+        ReportedData(
+            4,
+            true,
+            "Android Kotlin4",
+            "This book is all about android ha ha",
+            "pdf",
+            "University"
+        ),
+        ReportedData(
+            5,
+            true,
+            "Android Kotlin5",
+            "This book is all about android ha ha",
+            "pdf",
+            "University"
+        ),
+        ReportedData(
+            6,
+            true,
+            "Android Kotlin6",
+            "This book is all about android ha ha",
+            "pdf",
+            "University"
+        ),
+        ReportedData(
+            7,
+            true,
+            "Android Kotlin7",
+            "This book is all about android ha ha",
+            "pdf",
+            "University"
+        ),
+        ReportedData(
+            8,
+            true,
+            "Android Kotlin8",
+            "This book is all about android ha ha",
+            "pdf",
+            "University"
+        ),
+        ReportedData(
+            9,
+            true,
+            "Android Kotlin9",
+            "This book is all about android ha ha",
+            "pdf",
+            "University"
+        ),
+        ReportedData(
+            10,
+            true,
+            "Android Kotlin10",
+            "This book is all about android ha ha",
+            "pdf",
+            "University"
+        ),
+        ReportedData(
+            11,
+            true,
+            "Android Kotlin11",
+            "This book is all about android ha ha",
+            "pdf",
+            "University"
+        )
+       )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_cell,parent,false) as View
@@ -53,8 +128,8 @@ class AdapterRV : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: myViewHolder, position: Int) {
-        holder.view.title.text = mockData[position].name
-        holder.view.subtitle.text = mockData[position].lastname
+        holder.view.title.text = mockData[position].file_name
+        holder.view.subtitle.text = mockData[position].file_description
     }
 
     class myViewHolder(val view:View): RecyclerView.ViewHolder(view)
