@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.surafel.kotlineshareapp.R
-import com.example.surafel.kotlineshareapp.DataManager.mockData
+import com.example.surafel.kotlineshareapp.datamanager.mockData
 import kotlinx.android.synthetic.main.recycler_view_cell.view.*
 
 class AdapterRV : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
