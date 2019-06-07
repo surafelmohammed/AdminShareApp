@@ -12,13 +12,14 @@ import kotlinx.android.synthetic.main.recycler_view_cell.view.*
 
 class AdapterRV : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
 
+    private var count = 0
     val mockData= listOf(
-        mockData("test1","check"),
-        mockData("test2","check"),
-        mockData("test4","check"),
-        mockData("test5","check"),
-        mockData("test16","check"),
-        mockData("test17","check"),
+        mockData("Android Kotlin","check"),
+        mockData("Android Java","check"),
+        mockData("Just Android","check"),
+        mockData("Android Kotlin2","check"),
+        mockData("Android Kotlin3","check"),
+        mockData("Android Kotlin4","check"),
         mockData("test18","check"),
         mockData("test19","check"),
         mockData("test11","check"),
@@ -32,7 +33,18 @@ class AdapterRV : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_cell,parent,false) as View
 
         view.setOnClickListener {
-            view.hidden_item.visibility = LinearLayout.VISIBLE
+
+        }
+        view.iv_more.setOnClickListener {
+            count = count +1
+            if(count%2!=0){
+                view.hidden_item.visibility = LinearLayout.VISIBLE
+                view.iv_more.setImageResource(R.drawable.less)
+            }else {
+                view.hidden_item.visibility = LinearLayout.GONE
+                view.iv_more.setImageResource(R.drawable.more)
+
+            }
         }
         return myViewHolder(view)
     }

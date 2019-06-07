@@ -4,152 +4,242 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
-    <com.google.android.material.card.MaterialCardView
-            android:layout_margin="5dp"
-            app:cardElevation="5dp"
-            app:cardCornerRadius="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+
     <LinearLayout android:layout_width="match_parent"
                   android:orientation="vertical"
                   android:layout_height="wrap_content">
 
 
-        <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+        <com.google.android.material.card.MaterialCardView
+                android:layout_margin="10dp"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="8dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:foreground="?attr/selectableItemBackground">
-            <com.github.vipulasri.timelineview.TimelineView
-                    android:id="@+id/timeline"
-                    android:layout_width="10dp"
-                    android:layout_height="match_parent"
-                    app:endLineColor="@color/gray"
-                    app:lineWidth="2dp"
-                    app:markerSize="14dp"
-                    android:background="@color/white"
-                    app:marker="@drawable/ic_marker_inactive"
-                    app:startLineColor="@color/gray"/>
-
-            <ImageView
-                    android:id="@+id/item_icon"
-                    android:layout_margin="16dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/track"/>
-
+                android:layout_height="wrap_content">
             <LinearLayout
-                    android:paddingStart="@dimen/activity_vertical_margin"
-                    android:paddingLeft="@dimen/activity_vertical_margin"
-                    android:paddingEnd="8dp"
-                    android:paddingRight="8dp"
-                    android:layout_gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="150dp"
+                    android:orientation="horizontal"
+                    android:foreground="?attr/selectableItemBackground">
 
-                <TextView
-                        android:id="@+id/title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                <ImageView
+                        android:layout_weight="5"
+                        android:id="@+id/item_icon"
                         android:layout_gravity="center_vertical"
-                        android:ellipsize="end"
-                        android:fontFamily="sans-serif-light"
-                        android:maxLines="1"
-                        android:text="@string/app_name"
-                        android:textSize="22sp"/>
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/got8"/>
 
                 <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:orientation="horizontal">
-                    <TextView
-                            android:layout_marginTop="5dp"
-                            android:id="@+id/subtitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:fontFamily="sans-serif-light"
-                            android:maxLines="1"
-                            android:text="Measurements"
-                            android:textSize="16sp"
-                            android:layout_weight="1"/>
-                    <TextView
-                            android:layout_marginTop="@dimen/activity_vertical_margin"
-                            android:layout_marginLeft="8dp"
-                            android:id="@+id/btn_report"
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:textSize="16sp"
-                            android:padding="5dp"
-                            android:text="Report"
-                            android:textColor="@color/colorPrimary"
-                    />
-                </LinearLayout>
-            </LinearLayout>
+                        android:layout_weight="8"
+                        android:paddingStart="@dimen/activity_vertical_margin"
+                        android:paddingLeft="@dimen/activity_vertical_margin"
+                        android:paddingEnd="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-        </LinearLayout>
+                    <TextView
+                            android:layout_weight="2"
+                            android:id="@+id/title"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_gravity="center_vertical"
+                            android:ellipsize="end"
+                            android:textColor="@color/black"
+                            android:maxLines="1"
+                            android:text="@string/app_name"
+                            android:textSize="22sp"/>
+
+                    <LinearLayout
+                            android:layout_weight="5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:padding="5dp"
+                            android:orientation="horizontal">
+                        <TextView
+                                android:layout_marginTop="5dp"
+                                android:id="@+id/subtitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="41dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-light"
+                                android:maxLines="1"
+                                android:text="Measurements"
+                                android:textSize="16sp"
+                                android:layout_weight="1"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_gravity="bottom"
+                            android:layout_height="30dp">
+
+                        <View android:layout_width="1dp"
+                              android:layout_marginLeft="40dp"
+                              android:background="#ccc"
+                              android:layout_marginTop="2dp"
+                              android:layout_marginBottom="2dp"
+                              android:layout_height="match_parent"/>
+                        <ImageView android:layout_width="40dp"
+                                   android:src="@drawable/heart"
+                                   android:padding="5dp"
+                                   android:layout_height="30dp"/>
+                        <View android:layout_width="1dp"
+                              android:background="#ccc"
+                              android:layout_marginTop="2dp"
+                              android:layout_marginBottom="2dp"
+                              android:layout_height="match_parent"/>
+                        <ImageView android:layout_width="40dp"
+                                   android:src="@drawable/bell"
+                                   android:padding="4dp"
+                                   android:layout_height="30dp"/>
+                        <View android:layout_width="1dp"
+                              android:background="#ccc"
+                              android:layout_marginTop="2dp"
+                              android:layout_marginBottom="2dp"
+                              android:layout_height="match_parent"/>
+                        <ImageView android:layout_width="60dp"
+                                   android:padding="5dp"
+                                   android:clickable="true"
+                                   android:id="@+id/iv_more"
+                                   android:src="@drawable/more"
+                                   android:layout_height="30dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
 
         <LinearLayout
+
                 android:layout_width="match_parent"
                 android:id="@+id/exp_products"
                 android:groupIndicator="@null"
                 android:layout_height="wrap_content">
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
+
+            <androidx.cardview.widget.CardView
+                    android:layout_margin="5dp"
+                    app:cardElevation="3dp"
+                    app:cardCornerRadius="5dp"
+                    android:clickable="true"
+                    android:visibility="gone"
                     android:id="@+id/hidden_item"
 
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
                 <LinearLayout
-                        android:id="@+id/btn_30_min"
-                        android:orientation="vertical"
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center">
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:src="@drawable/ic_navigate_next_black_24dp"/>
-
-                    <TextView
+                    <LinearLayout
+                            android:id="@+id/btn_remove"
+                            android:orientation="vertical"
+                            android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Remove Report"/>
-                </LinearLayout>
+                            android:gravity="center">
 
-                <LinearLayout
-                        android:id="@+id/btn_45_min"
-                        android:orientation="vertical"
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center">
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:padding="5dp"
+                                android:src="@drawable/garbage"/>
 
-                    <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:src="@drawable/ic_delete_forever_black_24dp"/>
-
-                    <TextView
+                        <TextView
+                                android:fontFamily="sans-serif-light"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Remove Report"/>
+                    </LinearLayout>
+                    <View android:layout_width="1dp"
+                          android:background="#ccc"
+                          android:layout_marginTop="5dp"
+                          android:layout_marginBottom="5dp"
+                          android:layout_height="match_parent"/>
+                    <LinearLayout
+                            android:id="@+id/btn_seen"
+                            android:orientation="vertical"
+                            android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Delete File"/>
+                            android:gravity="center">
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:padding="5dp"
+                                android:src="@drawable/eye"/>
+
+                        <TextView
+                                android:fontFamily="sans-serif-light"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ignore"/>
+                    </LinearLayout>
+                    <View android:layout_width="1dp"
+                          android:background="#ccc"
+                          android:layout_marginTop="5dp"
+                          android:layout_marginBottom="5dp"
+                          android:layout_height="match_parent"/>
+                    <LinearLayout
+                            android:id="@+id/btn_more"
+                            android:orientation="vertical"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:padding="5dp"
+                                android:src="@drawable/ic_more_black_24dp"/>
+
+                        <TextView
+                                android:fontFamily="sans-serif-light"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Detail"/>
+                    </LinearLayout>
+                    <View android:layout_width="1dp"
+                          android:background="#ccc"
+                          android:layout_marginTop="5dp"
+                          android:layout_marginBottom="5dp"
+                          android:layout_height="match_parent"/>
+                    <LinearLayout
+                            android:id="@+id/btn_delete"
+                            android:orientation="vertical"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/ic_delete_forever_black_24dp"/>
+
+                        <TextView
+                                android:fontFamily="sans-serif-light"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Delete File"/>
+                    </LinearLayout>
+
+
                 </LinearLayout>
-
-
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+
 </LinearLayout>
