@@ -30,7 +30,11 @@
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
                         android:src="@drawable/got8"/>
-
+                <View android:layout_width="0.5dp"
+                      android:layout_marginTop="5dp"
+                      android:layout_marginBottom="5dp"
+                      android:background="@color/gray"
+                      android:layout_height="match_parent"/>
                 <LinearLayout
                         android:layout_weight="8"
                         android:paddingStart="@dimen/activity_vertical_margin"
@@ -59,11 +63,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:padding="5dp"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
                         <TextView
                                 android:layout_marginTop="5dp"
                                 android:id="@+id/subtitle"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="41dp"
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-light"
@@ -71,6 +75,11 @@
                                 android:text="Measurements"
                                 android:textSize="16sp"
                                 android:layout_weight="1"/>
+                        <TextView android:layout_width="match_parent"
+                                  android:id="@+id/no_reports"
+                                  android:text="No of reports "
+                                  android:fontFamily="sans-serif-light"
+                                  android:layout_height="wrap_content"/>
 
                     </LinearLayout>
 
@@ -106,6 +115,7 @@
                               android:layout_height="match_parent"/>
                         <ImageView android:layout_width="60dp"
                                    android:padding="5dp"
+                                   android:layout_weight="1"
                                    android:clickable="true"
                                    android:id="@+id/iv_more"
                                    android:src="@drawable/more"

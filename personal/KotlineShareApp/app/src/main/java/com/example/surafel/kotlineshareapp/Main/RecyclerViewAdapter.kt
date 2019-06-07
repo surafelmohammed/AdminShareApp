@@ -1,13 +1,12 @@
 package com.example.surafel.kotlineshareapp.Main
 
-import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.surafel.kotlineshareapp.R
-import com.example.surafel.kotlineshareapp.data.mockData
+import com.example.surafel.kotlineshareapp.DataManager.mockData
 import kotlinx.android.synthetic.main.recycler_view_cell.view.*
 
 class AdapterRV : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
