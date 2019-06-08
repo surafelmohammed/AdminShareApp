@@ -1,5 +1,6 @@
 package com.example.surafel.kotlineshareapp.Main
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +10,9 @@ import com.example.surafel.kotlineshareapp.R
 import kotlinx.android.synthetic.main.recycler_view_cell.view.*
 import com.example.surafel.kotlineshareapp.LocalDB.ReportedData
 
-class AdapterRV : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
+class AdapterRV() : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
 
+    private var reportedData: List<ReportedData> = emptyList()
     private var count = 0
     val mockData= listOf(
         ReportedData(
@@ -130,6 +132,10 @@ class AdapterRV : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
     override fun onBindViewHolder(holder: myViewHolder, position: Int) {
         holder.view.title.text = mockData[position].file_name
         holder.view.subtitle.text = mockData[position].file_description
+    }
+    fun setReportData(reportedData: List<ReportedData>){
+        this.reportedData = reportedData
+        notifyDataSetChanged()
     }
 
     class myViewHolder(val view:View): RecyclerView.ViewHolder(view)

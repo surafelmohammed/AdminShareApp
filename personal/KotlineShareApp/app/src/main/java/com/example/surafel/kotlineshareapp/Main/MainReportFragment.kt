@@ -7,10 +7,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.surafel.kotlineshareapp.LocalDB.ReportedData
 
 import com.example.surafel.kotlineshareapp.R
+import com.example.surafel.kotlineshareapp.viewmodel.ReportViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,26 +32,32 @@ private const val ARG_PARAM2 = "param2"
  */
 class MainReportFragment : Fragment() {
     private var listener: OnFragmentInteractionListener? = null
-
+    lateinit var viewModel: ReportViewModel
     lateinit var recyclerView: RecyclerView
     lateinit var viewAdapterRV: RecyclerView.Adapter<*>
     lateinit var viewManager: RecyclerView.LayoutManager
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProviders.of(this).get(ReportViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
+        val view = inflater.inflate(R.layout.fragment_main_report,container,false)
         viewAdapterRV = AdapterRV()
         viewManager = LinearLayoutManager(context)
-
-        val view = inflater.inflate(R.layout.fragment_main_report,container,false)
-
         recyclerView = view.findViewById<RecyclerView>(R.id.rv_report).apply{
             setHasFixedSize(true)
             adapter = viewAdapterRV
             layoutManager = viewManager
         }
+        viewModel.allReportData.observe(this, Observer {
+                reportData->reportData?.let { (viewAdapterRV as AdapterRV).setReportData(reportData) }
+        })
 
         return view
     }
