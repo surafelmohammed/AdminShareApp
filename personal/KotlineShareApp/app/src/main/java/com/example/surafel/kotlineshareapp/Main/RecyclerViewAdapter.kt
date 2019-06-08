@@ -1,19 +1,24 @@
 package com.example.surafel.kotlineshareapp.Main
 
 import android.content.Context
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.surafel.kotlineshareapp.R
 import kotlinx.android.synthetic.main.recycler_view_cell.view.*
 import com.example.surafel.kotlineshareapp.LocalDB.ReportedData
+import kotlin.coroutines.coroutineContext
 
-class AdapterRV() : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
+class AdapterRV : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
 
     private var reportedData: List<ReportedData> = emptyList()
     private var count = 0
+
     val mockData= listOf(
         ReportedData(
             1,
@@ -107,10 +112,6 @@ class AdapterRV() : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_cell,parent,false) as View
-
-        view.setOnClickListener {
-
-        }
         view.iv_more.setOnClickListener {
             count = count +1
             if(count%2!=0){
@@ -126,12 +127,22 @@ class AdapterRV() : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return mockData.size
+        return reportedData.size //modkData.size for mock data object
     }
 
     override fun onBindViewHolder(holder: myViewHolder, position: Int) {
-        holder.view.title.text = mockData[position].file_name
-        holder.view.subtitle.text = mockData[position].file_description
+
+        val data = reportedData[position]
+        val fragment = MainReportDetailFragment()
+
+        holder.view.title.text = data.file_name//mockData[position]. for  mock data object
+        holder.view.subtitle.text = data.file_description
+        holder.view.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putSerializable("recycler_item",data)
+            Log.d("setOnclickListener","check")
+            fragment.arguments = bundle
+        }
     }
     fun setReportData(reportedData: List<ReportedData>){
         this.reportedData = reportedData

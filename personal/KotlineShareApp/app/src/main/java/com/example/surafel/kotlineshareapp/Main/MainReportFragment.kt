@@ -3,18 +3,14 @@ package com.example.surafel.kotlineshareapp.Main
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.surafel.kotlineshareapp.LocalDB.ReportedData
-
 import com.example.surafel.kotlineshareapp.R
 import com.example.surafel.kotlineshareapp.viewmodel.ReportViewModel
 
@@ -47,16 +43,16 @@ class MainReportFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view = inflater.inflate(R.layout.fragment_main_report,container,false)
+        val view = inflater.inflate(R.layout.fragment_main_report, container, false)
         viewAdapterRV = AdapterRV()
         viewManager = LinearLayoutManager(context)
-        recyclerView = view.findViewById<RecyclerView>(R.id.rv_report).apply{
+        recyclerView = view.findViewById<RecyclerView>(R.id.rv_report).apply {
             setHasFixedSize(true)
             adapter = viewAdapterRV
             layoutManager = viewManager
         }
-        viewModel.allReportData.observe(this, Observer {
-                reportData->reportData?.let { (viewAdapterRV as AdapterRV).setReportData(reportData) }
+        viewModel.allReportData.observe(this, Observer { reportData ->
+            reportData?.let { (viewAdapterRV as AdapterRV).setReportData(reportData) }
         })
 
         return view
