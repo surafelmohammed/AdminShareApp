@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity(), LoginFragment.onLoginClick, MainFragme
         setContentView(R.layout.activity_main)
 
         val fragmentSplash = ViewPagerFragment()
-        val fragmentMain = MainFragment()
 
         supportFragmentManager.beginTransaction()
             .add(R.id.fl_container,fragmentSplash)

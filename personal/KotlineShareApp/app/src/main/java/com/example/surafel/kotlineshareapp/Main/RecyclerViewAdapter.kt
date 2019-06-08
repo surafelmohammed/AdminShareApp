@@ -12,11 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.surafel.kotlineshareapp.R
 import kotlinx.android.synthetic.main.recycler_view_cell.view.*
 import com.example.surafel.kotlineshareapp.LocalDB.ReportedData
+import com.example.surafel.kotlineshareapp.network.NetworkData
 import kotlin.coroutines.coroutineContext
 
-class AdapterRV : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
+class AdapterRV(test:List<NetworkData>) : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
 
-    private var reportedData: List<ReportedData> = emptyList()
+    private var reportedData: List<NetworkData> = test
     private var count = 0
 
     val mockData= listOf(
@@ -135,17 +136,16 @@ class AdapterRV : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
         val data = reportedData[position]
         val fragment = MainReportDetailFragment()
 
-        holder.view.title.text = data.file_name//mockData[position]. for  mock data object
-        holder.view.subtitle.text = data.file_description
-        holder.view.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putSerializable("recycler_item",data)
-            Log.d("setOnclickListener","check")
-            fragment.arguments = bundle
-        }
+        holder.view.title.text = data.title//mockData[position]. for  mock data object
+        holder.view.subtitle.text = data.body
+//        holder.view.setOnClickListener {
+//            val bundle = Bundle()
+//            bundle.putSerializable("recycler_item",data)
+//            Log.d("setOnclickListener","check")
+//            fragment.arguments = bundle
+//        }
     }
     fun setReportData(reportedData: List<ReportedData>){
-        this.reportedData = reportedData
         notifyDataSetChanged()
     }
 
