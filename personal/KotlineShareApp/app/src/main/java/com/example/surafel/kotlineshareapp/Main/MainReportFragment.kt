@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Adapter
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.net.ConnectivityManagerCompat
@@ -22,6 +23,7 @@ import com.example.surafel.kotlineshareapp.R
 import com.example.surafel.kotlineshareapp.network.NetworkData
 import com.example.surafel.kotlineshareapp.network.ReportApiService
 import com.example.surafel.kotlineshareapp.viewmodel.ReportViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -45,6 +47,7 @@ class MainReportFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         viewModel = ViewModelProviders.of(this).get(ReportViewModel::class.java)
         val responseData:NetworkData
     }
@@ -54,7 +57,7 @@ class MainReportFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-
+        val fragmentDetail = MainReportDetailFragment()
          var viewAdapterRV: RecyclerView.Adapter<*>
          val view = inflater.inflate(R.layout.fragment_main_report, container, false)
         viewManager = LinearLayoutManager(context)
@@ -62,13 +65,16 @@ class MainReportFragment : Fragment() {
 //            reportData?.let { (viewAdapterRV as AdapterRV).setReportData(reportData) }
 //        })
         val Nreport:Call<List<NetworkData>> = ReportApiService.getInstance().findAllResponse()
+        val repotFrag=this
         Nreport.enqueue(object:Callback<List<NetworkData>>{
             override fun onFailure(call: Call<List<NetworkData>>, t: Throwable) {
-                Toast.makeText(activity,"the retrofit failed",Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity,"Connection Failed",Toast.LENGTH_LONG).show()
             }
             override fun onResponse(call: Call<List<NetworkData>>, response: retrofit2.Response<List<NetworkData>>) {
                val mock:List<NetworkData> =  response.body()!!
-                viewAdapterRV = AdapterRV(mock)
+
+                viewAdapterRV = AdapterRV(mock,activity!!.supportFragmentManager)
+
                 recyclerView = view.findViewById<RecyclerView>(R.id.rv_report).apply {
                     setHasFixedSize(true)
                     layoutManager = viewManager
@@ -76,13 +82,12 @@ class MainReportFragment : Fragment() {
                 }
             }
         })
+
         return view
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
-    }
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

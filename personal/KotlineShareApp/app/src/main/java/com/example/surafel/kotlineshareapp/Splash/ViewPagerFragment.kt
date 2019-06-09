@@ -39,6 +39,7 @@ class ViewPagerFragment : Fragment() {
                0,1->view.vp_splash.setCurrentItem(view.vp_splash.currentItem+1)
                2->activity?.supportFragmentManager!!.beginTransaction()
                    .replace(R.id.fl_container,fragmentLogin)
+                   .addToBackStack(null)
                    .commit()
            }
         }

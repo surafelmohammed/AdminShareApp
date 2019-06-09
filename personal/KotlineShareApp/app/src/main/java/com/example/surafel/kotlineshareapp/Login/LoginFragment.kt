@@ -9,6 +9,9 @@ import android.view.LayoutInflater
 import android.view.OrientationEventListener
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.surafel.kotlineshareapp.Main.MainFragment
 
 import com.example.surafel.kotlineshareapp.R
@@ -35,13 +38,18 @@ class LoginFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.login_fragment, container, false)
         val fragmentMain = MainFragment()
-        view.btn_login.setOnClickListener {
-            listener?.loginCallback()
-            activity?.supportFragmentManager!!.beginTransaction()
-                .replace(R.id.fl_container,fragmentMain)
-                .addToBackStack(null)
-                .commit()
+
+        val loginButton = view.findViewById<Button>(R.id.btn_login)
+        loginButton.setOnClickListener {
+            view.findNavController().navigate(R.id.mainFragment4)
         }
+//        view.btn_login.setOnClickListener {
+//            listener?.loginCallback()
+//            activity?.supportFragmentManager!!.beginTransaction()
+//                .add(R.id.fl_container,fragmentMain)
+//                .addToBackStack(null)
+//                .commit()
+//        }
         return view
     }
 
