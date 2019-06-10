@@ -69,7 +69,14 @@ class MainReportFragment : Fragment() {
         val mainActivity = this
         Nreport.enqueue(object:Callback<List<NetworkData>>{
             override fun onFailure(call: Call<List<NetworkData>>, t: Throwable) {
-                Toast.makeText(activity,"Connection Failed",Toast.LENGTH_LONG).show()
+                viewAdapterRV = AdapterRV(mockData,mainActivity)
+
+                recyclerView = view.findViewById<RecyclerView>(R.id.rv_report).apply {
+                    setHasFixedSize(true)
+                    adapter = viewAdapterRV
+                    layoutManager = viewManager
+
+                }
             }
             override fun onResponse(call: Call<List<NetworkData>>, response: retrofit2.Response<List<NetworkData>>) {
                val mock:List<NetworkData> =  response.body()!!
@@ -105,5 +112,57 @@ class MainReportFragment : Fragment() {
 
         fun onFragmentInteraction(uri: Uri)
     }
+    val mockData= listOf(
+        NetworkData(
+            1,
+            1,
+            "android book",
+            "This book is all about android ha ha This book is all about android ha ha\""),
+        NetworkData(
+            1,
+            2,
+            "android book",
+            "This book is all about android ha ha This book is all about android ha ha\""),
+        NetworkData(
+            1,
+            3,
+            "android book",
+            "This book is all about android ha ha This book is all about android ha ha\""),
+        NetworkData(
+            1,
+            4,
+            "android book",
+            "This book is all about android ha ha This book is all about android ha ha\""),
+        NetworkData(
+            1,
+            5,
+            "android book",
+            "This book is all about android ha ha This book is all about android ha ha\""),
+        NetworkData(
+            1,
+            10,
+            "android book",
+            "This book is all about android ha ha This book is all about android ha ha\""),
+        NetworkData(
+            1,
+            6,
+            "android book",
+            "This book is all about android ha ha This book is all about android ha ha\""),
+        NetworkData(
+            1,
+            7,
+            "android book",
+            "This book is all about android ha ha This book is all about android ha ha\""),
+        NetworkData(
+            1,
+            8,
+            "android book",
+            "This book is all about android ha ha This book is all about android ha ha\""),
+        NetworkData(
+            1,
+            9,
+            "android book",
+            "This book is all about android ha ha This book is all about android ha ha\"")
+    )
 }
 

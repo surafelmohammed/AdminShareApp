@@ -41,9 +41,6 @@ class AdapterRV(test:List<NetworkData>,val parentFragment:MainReportFragment) : 
             }
         }
 
-        view.setOnClickListener {
-            view.findNavController().navigate(R.id.mainReportDetailFragment4)
-        }
         return myViewHolder(view)
     }
 
@@ -59,6 +56,12 @@ class AdapterRV(test:List<NetworkData>,val parentFragment:MainReportFragment) : 
         holder.view.title.text = data.title//mockData[position]. for  mock data object
         holder.view.subtitle.text = data.body
 
+        val bundle = Bundle()
+        bundle.putString("title",reportedData.get(position).id)
+        bundle.putString("body",reportedData.get(position).body)
+        holder.view.setOnClickListener {
+            holder.view.findNavController().navigate(R.id.mainReportDetailFragment4,bundle)
+        }
 //        holder.view.setOnClickListener {
 //            parentFragment.beginTransaction()
 //                .replace(R.id.fl_main_fragment,fragmentDetail)
@@ -73,94 +76,5 @@ class AdapterRV(test:List<NetworkData>,val parentFragment:MainReportFragment) : 
 
     class myViewHolder(val view:View): RecyclerView.ViewHolder(view)
 
-    //    val mockData= listOf(
-//        ReportedData(
-//            1,
-//            true,
-//            "Android Kotlin1",
-//            " This book is all about android ha ha This book is all about android ha ha",
-//            "pdf",
-//            "University"
-//        ),
-//        ReportedData(
-//            2,
-//            true,
-//            "Android Kotlin2",
-//            "This book is all about android ha ha",
-//            "pdf",
-//            "University"
-//        ),parentFragment
-//        ReportedData(
-//            3,
-//            true,
-//            "Android Kotlin3",
-//            "This book is all about android ha ha",
-//            "pdf",
-//            "University"
-//        ),
-//        ReportedData(
-//            4,
-//            true,
-//            "Android Kotlin4",
-//            "This book is all about android ha ha",
-//            "pdf",
-//            "University"
-//        ),
-//        ReportedData(
-//            5,
-//            true,
-//            "Android Kotlin5",
-//            "This book is all about android ha ha",
-//            "pdf",
-//            "University"
-//        ),
-//        ReportedData(
-//            6,
-//            true,
-//            "Android Kotlin6",
-//            "This book is all about android ha ha",
-//            "pdf",
-//            "University"
-//        ),
-//        ReportedData(
-//            7,
-//            true,
-//            "Android Kotlin7",
-//            "This book is all about android ha ha",
-//            "pdf",
-//            "University"
-//        ),
-//        ReportedData(
-//            8,
-//            true,
-//            "Android Kotlin8",
-//            "This book is all about android ha ha",
-//            "pdf",
-//            "University"
-//        ),
-//        ReportedData(
-//            9,
-//            true,
-//            "Android Kotlin9",
-//            "This book is all about android ha ha",
-//            "pdf",
-//            "University"
-//        ),
-//        ReportedData(
-//            10,
-//            true,
-//            "Android Kotlin10",
-//            "This book is all about android ha ha",
-//            "pdf",
-//            "University"
-//        ),
-//        ReportedData(
-//            11,
-//            true,
-//            "Android Kotlin11",
-//            "This book is all about android ha ha",
-//            "pdf",
-//            "University"
-//        )
-//       )
+
 }

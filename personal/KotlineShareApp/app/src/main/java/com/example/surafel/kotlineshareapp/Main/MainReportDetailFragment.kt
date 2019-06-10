@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.surafel.kotlineshareapp.R
 import com.example.surafel.kotlineshareapp.network.NetworkData
+import kotlinx.android.synthetic.main.fragment_main_report_detail.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,8 +29,9 @@ class MainReportDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_main_report_detail, container, false)
-        val data = Bundle().getSerializable("recycler_item")
-
+        val textOne = arguments.getBundle("title").toString()
+        view.title.text = Bundle().getString("title")
+        view.body.text = Bundle().getString("body")
         return view
     }
 
