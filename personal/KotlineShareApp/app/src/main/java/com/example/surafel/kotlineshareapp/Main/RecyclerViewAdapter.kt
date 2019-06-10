@@ -1,5 +1,6 @@
 package com.example.surafel.kotlineshareapp.Main
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -50,7 +51,6 @@ class AdapterRV(test:List<NetworkData>,val parentFragment:MainReportFragment) : 
     override fun onBindViewHolder(holder: myViewHolder, position: Int) {
 
         val data = reportedData[position]
-        val fragmentDetail = MainReportDetailFragment()
 
         holder.view.title.text = data.title//mockData[position]. for  mock data object
         holder.view.subtitle.text = data.body
@@ -59,6 +59,7 @@ class AdapterRV(test:List<NetworkData>,val parentFragment:MainReportFragment) : 
         bundle.putString("title",reportedData.get(position).title)
         bundle.putString("body",reportedData.get(position).body)
         bundle.putInt("id",reportedData.get(position).id)
+
         holder.view.setOnClickListener {
             holder.view.findNavController().navigate(R.id.mainReportDetailFragment4,bundle)
         }
@@ -66,10 +67,12 @@ class AdapterRV(test:List<NetworkData>,val parentFragment:MainReportFragment) : 
             holder.view.findNavController().navigate(R.id.mainReportDetailFragment4,bundle)
         }
         holder.view.btn_delete.setOnClickListener {
-            ReportApiService.getInstance().deleteReport(reportedData.get(position).id)
+            progressDialog("Deleting the file").show()
+            //ReportApiService.getInstance().deleteReport(reportedData.get(position).id)
         }
         holder.view.btn_remove.setOnClickListener {
-            ReportApiService.getInstance().updataReport(data)
+            progressDialog("Removing The report").show()
+            //ReportApiService.getInstance().updataReport(data)
         }
         holder.view.btn_seen.setOnClickListener {
 
@@ -90,4 +93,11 @@ class AdapterRV(test:List<NetworkData>,val parentFragment:MainReportFragment) : 
     class myViewHolder(val view:View): RecyclerView.ViewHolder(view)
 
 
+    fun progressDialog(message:String):ProgressDialog
+    {
+        val pDialog = ProgressDialog(parentFragment.context)
+        pDialog.setTitle(message)
+        pDialog.setMessage("please wait...")
+        return pDialog
+    }
 }

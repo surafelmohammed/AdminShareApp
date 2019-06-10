@@ -1,5 +1,7 @@
 package com.example.surafel.kotlineshareapp.Main
 
+import android.app.AlertDialog
+import android.app.ProgressDialog
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
@@ -24,6 +26,7 @@ import com.example.surafel.kotlineshareapp.network.NetworkData
 import com.example.surafel.kotlineshareapp.network.ReportApiService
 import com.example.surafel.kotlineshareapp.viewmodel.ReportViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_main_report_detail.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -61,16 +64,22 @@ class MainReportFragment : Fragment() {
          var viewAdapterRV: RecyclerView.Adapter<*>
          val view = inflater.inflate(R.layout.fragment_main_report, container, false)
         viewManager = LinearLayoutManager(context)
-//        viewModel.allReportData.observe(this, Observer { reportData ->
-//            reportData?.let { (viewAdapterRV as AdapterRV).setReportData(reportData) }
-//        })
+
+        viewModel.allReportData.observe(this, Observer { reportData ->
+            viewAdapterRV = AdapterRV(mockData,this)
+            reportData?.let { (viewAdapterRV as AdapterRV).setReportData(reportData) }
+        })
+
         val Nreport:Call<List<NetworkData>> = ReportApiService.getInstance().findAllResponse()
+        val progress = progressDialog("Loading items")
+        progress.show()
+
         val repotFrag=this
         val mainActivity = this
         Nreport.enqueue(object:Callback<List<NetworkData>>{
             override fun onFailure(call: Call<List<NetworkData>>, t: Throwable) {
                 viewAdapterRV = AdapterRV(mockData,mainActivity)
-
+                progress.hide()
                 recyclerView = view.findViewById<RecyclerView>(R.id.rv_report).apply {
                     setHasFixedSize(true)
                     adapter = viewAdapterRV
@@ -80,14 +89,12 @@ class MainReportFragment : Fragment() {
             }
             override fun onResponse(call: Call<List<NetworkData>>, response: retrofit2.Response<List<NetworkData>>) {
                val mock:List<NetworkData> =  response.body()!!
-
                 viewAdapterRV = AdapterRV(mock,mainActivity)
-
                 recyclerView = view.findViewById<RecyclerView>(R.id.rv_report).apply {
                     setHasFixedSize(true)
                     adapter = viewAdapterRV
                     layoutManager = viewManager
-
+                    progress.hide()
                 }
             }
         })
@@ -111,6 +118,20 @@ class MainReportFragment : Fragment() {
     interface OnFragmentInteractionListener {
 
         fun onFragmentInteraction(uri: Uri)
+    }
+
+    fun alertDialog(message:String){
+//        val alertDialog = AlertDialog(context)
+//        alertDialog.setTitle(message)
+//        alertDialog.setMessage("please wait...   \nLoading the items")
+//        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,"")
+    }
+    fun progressDialog(message:String): ProgressDialog
+    {
+        val pDialog = ProgressDialog(context)
+        pDialog.setTitle(message)
+        pDialog.setMessage("please wait...")
+        return pDialog
     }
     val mockData= listOf(
         NetworkData(
