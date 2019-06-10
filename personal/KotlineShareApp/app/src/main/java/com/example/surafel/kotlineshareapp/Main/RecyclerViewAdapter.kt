@@ -17,6 +17,8 @@ import kotlinx.android.synthetic.main.recycler_view_cell.view.*
 import com.example.surafel.kotlineshareapp.LocalDB.ReportedData
 import com.example.surafel.kotlineshareapp.MainActivity
 import com.example.surafel.kotlineshareapp.network.NetworkData
+import com.example.surafel.kotlineshareapp.network.ReportApiService
+import retrofit2.Call
 import kotlin.coroutines.coroutineContext
 
 class AdapterRV(test:List<NetworkData>,val parentFragment:MainReportFragment) : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
@@ -57,11 +59,25 @@ class AdapterRV(test:List<NetworkData>,val parentFragment:MainReportFragment) : 
         holder.view.subtitle.text = data.body
 
         val bundle = Bundle()
-        bundle.putString("title",reportedData.get(position).id)
+        bundle.putString("title",reportedData.get(position).title)
         bundle.putString("body",reportedData.get(position).body)
+        bundle.putInt("id",reportedData.get(position).id)
         holder.view.setOnClickListener {
             holder.view.findNavController().navigate(R.id.mainReportDetailFragment4,bundle)
         }
+        holder.view.btn_more.setOnClickListener {
+            holder.view.findNavController().navigate(R.id.mainReportDetailFragment4,bundle)
+        }
+        holder.view.btn_delete.setOnClickListener {
+            ReportApiService.getInstance().deleteCourseAsync(reportedData.get(position).id)
+        }
+        holder.view.btn_remove.setOnClickListener {
+            ReportApiService.getInstance().updataReport(reportedData.get(position).title)
+        }
+        holder.view.btn_seen.setOnClickListener {
+
+        }
+
 //        holder.view.setOnClickListener {
 //            parentFragment.beginTransaction()
 //                .replace(R.id.fl_main_fragment,fragmentDetail)

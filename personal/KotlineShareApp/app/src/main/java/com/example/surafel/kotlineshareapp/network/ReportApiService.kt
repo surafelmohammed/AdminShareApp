@@ -1,5 +1,7 @@
 package com.example.surafel.kotlineshareapp.network
 
+import androidx.room.OnConflictStrategy
+import androidx.room.Update
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
@@ -19,8 +21,10 @@ interface ReportApiService {
     fun findAllResponse(): Call<List<com.example.surafel.kotlineshareapp.network.NetworkData>>
 
     @DELETE("posts/{id}")
-    fun deleteCourseAsync(@Path("id") id: Long)
+    fun deleteCourseAsync(@Path("id") id: Int)
 
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    fun updataReport(report:String)
 
     companion object {
 
