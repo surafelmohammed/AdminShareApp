@@ -7,4 +7,4 @@ data class NetworkData(
     val id: Int,
     val title: String,
     val body: String
-):Serializable
+)

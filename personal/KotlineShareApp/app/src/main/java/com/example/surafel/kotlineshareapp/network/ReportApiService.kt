@@ -20,11 +20,14 @@ interface ReportApiService {
     @GET("posts")
     fun findAllResponse(): Call<List<com.example.surafel.kotlineshareapp.network.NetworkData>>
 
+    @GET("posts")
+    fun findResponseById(id:Int): Call<com.example.surafel.kotlineshareapp.network.NetworkData>
+
     @DELETE("posts/{id}")
-    fun deleteCourseAsync(@Path("id") id: Int)
+    fun deleteReport(@Path("id") id: Int)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun updataReport(report:String)
+    fun updataReport(report:com.example.surafel.kotlineshareapp.network.NetworkData)
 
     companion object {
 
@@ -34,9 +37,13 @@ interface ReportApiService {
 
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BASIC
-
+            val client = OkHttpClient
+                .Builder()
+                .addInterceptor(interceptor)
+                .build()
             val retrofit: Retrofit = Retrofit.Builder()
                 .baseUrl(baseUrl)
+                .client(client)
                 .addConverterFactory(MoshiConverterFactory.create())
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .build()

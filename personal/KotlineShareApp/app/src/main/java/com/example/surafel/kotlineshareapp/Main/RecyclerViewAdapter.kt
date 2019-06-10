@@ -26,9 +26,6 @@ class AdapterRV(test:List<NetworkData>,val parentFragment:MainReportFragment) : 
     private var reportedData: List<NetworkData> = test
     private var count = 0
 
-
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_cell,parent,false) as View
 
@@ -69,10 +66,10 @@ class AdapterRV(test:List<NetworkData>,val parentFragment:MainReportFragment) : 
             holder.view.findNavController().navigate(R.id.mainReportDetailFragment4,bundle)
         }
         holder.view.btn_delete.setOnClickListener {
-            ReportApiService.getInstance().deleteCourseAsync(reportedData.get(position).id)
+            ReportApiService.getInstance().deleteReport(reportedData.get(position).id)
         }
         holder.view.btn_remove.setOnClickListener {
-            ReportApiService.getInstance().updataReport(reportedData.get(position).title)
+            ReportApiService.getInstance().updataReport(data)
         }
         holder.view.btn_seen.setOnClickListener {
 

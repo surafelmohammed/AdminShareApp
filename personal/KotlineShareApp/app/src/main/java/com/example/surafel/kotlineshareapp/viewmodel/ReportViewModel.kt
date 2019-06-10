@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.surafel.kotlineshareapp.LocalDB.ReportDatabase
 import com.example.surafel.kotlineshareapp.LocalDB.ReportedData
+import com.example.surafel.kotlineshareapp.network.ReportApiService
 import com.example.surafel.kotlineshareapp.repository.ReportRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,7 +17,8 @@ class ReportViewModel(application: Application) : AndroidViewModel(application) 
 
     init {
         val reportDao = ReportDatabase.getDatabase(application).getDao()
-        reportRepository = ReportRepository(reportDao)
+        val ApiService = ReportApiService.getInstance()
+        reportRepository = ReportRepository(reportDao,ApiService)
         allReportData = reportRepository.allReports()
     }
 

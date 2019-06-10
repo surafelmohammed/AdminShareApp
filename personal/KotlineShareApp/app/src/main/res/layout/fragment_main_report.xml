@@ -25,7 +25,7 @@
                     android:background="@color/white"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_menu_black_24dp"
+                    android:src="@drawable/bell"
                     android:layout_height="match_parent"/>
             <android.inputmethodservice.ExtractEditText
                     android:layout_width="0dp"

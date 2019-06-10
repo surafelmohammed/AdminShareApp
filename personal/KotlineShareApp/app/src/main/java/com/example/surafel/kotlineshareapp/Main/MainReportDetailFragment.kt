@@ -40,7 +40,7 @@ class MainReportDetailFragment : Fragment() {
 
         view.btn_file_delete.setOnClickListener {
             kotlin.run {
-                ReportApiService.getInstance().deleteCourseAsync(arguments!!.getInt("id"))
+                ReportApiService.getInstance().deleteReport(arguments!!.getInt("id"))
             }
         }
         view.btn_remove_file.setOnClickListener {
