@@ -68,11 +68,11 @@ class AdapterRV(test:List<NetworkData>,val parentFragment:MainReportFragment) : 
         }
         holder.view.btn_delete.setOnClickListener {
             progressDialog("Deleting the file").show()
-            //ReportApiService.getInstance().deleteReport(reportedData.get(position).id)
+            ReportApiService.getInstance().deleteReport(reportedData.get(position).id)
         }
         holder.view.btn_remove.setOnClickListener {
             progressDialog("Removing The report").show()
-            //ReportApiService.getInstance().updataReport(data)
+            ReportApiService.getInstance().updataReport(data)
         }
         holder.view.btn_seen.setOnClickListener {
 
