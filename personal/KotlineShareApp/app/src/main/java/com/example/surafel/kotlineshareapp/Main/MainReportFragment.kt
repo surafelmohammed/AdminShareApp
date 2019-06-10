@@ -40,7 +40,7 @@ private const val ARG_PARAM2 = "param2"
 
 
 class MainReportFragment : Fragment() {
-    private var listener: MainFragment.OnFragmentInteractionListener? = null
+
     lateinit var viewModel: ReportViewModel
     lateinit var recyclerView: RecyclerView
     lateinit var viewManager: RecyclerView.LayoutManager
@@ -66,6 +66,7 @@ class MainReportFragment : Fragment() {
 //        })
         val Nreport:Call<List<NetworkData>> = ReportApiService.getInstance().findAllResponse()
         val repotFrag=this
+        val mainActivity = this
         Nreport.enqueue(object:Callback<List<NetworkData>>{
             override fun onFailure(call: Call<List<NetworkData>>, t: Throwable) {
                 Toast.makeText(activity,"Connection Failed",Toast.LENGTH_LONG).show()
@@ -73,12 +74,13 @@ class MainReportFragment : Fragment() {
             override fun onResponse(call: Call<List<NetworkData>>, response: retrofit2.Response<List<NetworkData>>) {
                val mock:List<NetworkData> =  response.body()!!
 
-                viewAdapterRV = AdapterRV(mock,activity!!.supportFragmentManager)
+                viewAdapterRV = AdapterRV(mock,mainActivity)
 
                 recyclerView = view.findViewById<RecyclerView>(R.id.rv_report).apply {
                     setHasFixedSize(true)
-                    layoutManager = viewManager
                     adapter = viewAdapterRV
+                    layoutManager = viewManager
+
                 }
             }
         })
@@ -89,19 +91,6 @@ class MainReportFragment : Fragment() {
     // TODO: Rename method, update argument and hook method into UI event
 
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is MainFragment.OnFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
-        }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
-    }
 
     private fun connected(): Boolean {
 

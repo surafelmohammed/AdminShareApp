@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.surafel.kotlineshareapp.R
 import kotlinx.android.synthetic.main.recycler_view_cell.view.*
@@ -18,7 +19,7 @@ import com.example.surafel.kotlineshareapp.MainActivity
 import com.example.surafel.kotlineshareapp.network.NetworkData
 import kotlin.coroutines.coroutineContext
 
-class AdapterRV(test:List<NetworkData>,val parentFragment:FragmentManager) : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
+class AdapterRV(test:List<NetworkData>,val parentFragment:MainReportFragment) : RecyclerView.Adapter<AdapterRV.myViewHolder>() {
 
     private var reportedData: List<NetworkData> = test
     private var count = 0
@@ -39,6 +40,10 @@ class AdapterRV(test:List<NetworkData>,val parentFragment:FragmentManager) : Rec
                 view.iv_more.setImageResource(R.drawable.more)
             }
         }
+
+        view.setOnClickListener {
+            view.findNavController().navigate(R.id.mainReportDetailFragment4)
+        }
         return myViewHolder(view)
     }
 
@@ -54,12 +59,12 @@ class AdapterRV(test:List<NetworkData>,val parentFragment:FragmentManager) : Rec
         holder.view.title.text = data.title//mockData[position]. for  mock data object
         holder.view.subtitle.text = data.body
 
-        holder.view.setOnClickListener {
-            parentFragment.beginTransaction()
-                .replace(R.id.fl_main_fragment,fragmentDetail)
-                .commit()
-
-        }
+//        holder.view.setOnClickListener {
+//            parentFragment.beginTransaction()
+//                .replace(R.id.fl_main_fragment,fragmentDetail)
+//                .commit()
+//
+//        }
     }
 
     fun setReportData(reportedData: List<ReportedData>){

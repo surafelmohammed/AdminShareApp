@@ -7,13 +7,7 @@
         android:id="@+id/login_layout"
         android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".Login.LoginFragment">
-    <fragment
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:navGraph="@navigation/moblie_navigation"
-            app:defaultNavHost="true"
-            android:id="@+id/fragment3" android:layout_weight="1"/>
+
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
