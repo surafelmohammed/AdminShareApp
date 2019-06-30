@@ -1,0 +1,72 @@
+We recommend that you have ads persist for 60 seconds or longer, depending on the functionality of your app. 
+
+ 	
+Content policies
+	
+    Adult content
+    Content that advocates against an individual, group or organization
+    Copyrighted material
+    Drug, alcohol, and tobacco-related content
+    Hacking and cracking content
+    Violent content
+    Weapon-related content
+    Other illegal content
+    Apps that use Google Brand features
+    Apps that offer compensation programs
+    Copyright Infringement
+    User generated content
+	
+Behavioral policies
+  	
+    Exceptions to AdSense policies
+    Invalid clicks and impressions
+    Ad placement
+    Sub-syndication and ad network mediation
+    App promotion
+    Personalized advertising
+
+Implementation guidance
+-Think about the user
+-Users should not be encouraged to click on ads
+-Reserve ad space during loading of app pages
+-Ads should not be placed on screens that don’t offer any content
+-Integrate the latest SDK
+-Request appropriate ad formats
+-Optimization of ad placement
+
+
+all types of ads has one thing in common
+1,mobile ad sdk
+to do this just add a dependency and sync the project
+
+************************************************************************************
+interstitial ads
+1, create an interstitial object
+2, request an ad
+3, wait until the right moment
+4, check if the ad has loaded
+5, Display ad
+
+banner ads
+1,create a banner view object
+2,request an ad
+3,watch as ad appears
+
+*****************from android developers********************************************
+firebase and monetization(making money outofit)
+firebae analytics
+        *unlimited free reporting
+        *Audience segmentation
+    define custom audiences based on device data, coustom events,or user properties
+what kind of information do u get
+    geographic
+    demographic
+    engagement
+    revenue
+ways to monetize apps in google play
+    premium model-user pay to download app
+    freemium model -downloading app is free
+                    -user pay for upgrades or in-app purchases
+    subscriptions-user pay recurring fee for app
+    ads - app if free but displays ads
+
